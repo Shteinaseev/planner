@@ -5,19 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tasks planner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
     <main class="main">
         <aside class="panel" data-js-panel>
-            <h2>Datum: <time data-js-panel-time datetime=""></time></h2>
+            <h2>Datum: <span data-js-panel-day></span></h2>
+            <p>Sat: 
+                <span data-js-panel-time></span>
+            </p>
             <form class="control">
                 <div class="field">
-                    <label for="task-name"></label>
+                    <label for="task-name">Naziv obaveze</label>
                     <input id="task-name" type="text">
                 </div>
                 <div class="field">
-                    <label for="prioritet"></label>
+                    <label for="prioritet">Prioritet</label>
                     <select name="prioritet" id="prioritet">
                         <option value="nizak">Nizak</option>
                         <option value="srednji">Srednji</option>
@@ -28,7 +33,7 @@
                     <label for="rok">Rok</label>
                     <input id="rok" type="date" />
                 </div>
-                <button class="addBTN"></button>
+                <button class="addBTN">Dodaj</button>
             </form>
         </aside>
         <section class="content">
@@ -41,11 +46,15 @@
             <div class="info" data-js-info>
                 <p class="total">
                     Ukupno:
-                    <span id="total"></span>
+                    <span id="total">0</span>
                 </p>
                 <p class="completed">
                     Zavrseno:
-                    <span id="completed"></span>
+                    <span id="completed">0</span>
+                </p>
+                <p class="uncompleted">
+                    Nezavrseno:
+                    <span id="uncompleted">0</span>
                 </p>
             </div>
         </section>

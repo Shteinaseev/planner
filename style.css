@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+option {
+    color: #0f2027;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    background: radial-gradient(circle closest-corner, #0f2027, #203a43, #2c5364);
+    color: #fff;
+}
+
+input,
+textarea {
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+select:focus {
+    outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.main {
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(min-content, 22rem) 1fr;
+}
+
+.panel {
+    border-right: 2px solid #ffffff22;
+    padding-block: 1rem;
+    padding-inline: 0.4rem;
+    background-color: #ffffff22;
+    backdrop-filter: blur(20px);
+    box-shadow: rgba(50, 50, 93, 0.65) 0px 30px 60px -12px inset,
+        rgba(0, 0, 0, 1) 0px 18px 36px -18px inset;
+}
+
+.content {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+h2 {
+    span {
+        font-size: 1.2rem;
+        font-weight: 300;
+    }
+}
+
+.control {
+    margin-top: 1rem;
+    background-image: radial-gradient(circle closest-corner, #060a33, #ffffff10);
+    border-radius: 0.8rem;
+    padding: 1rem;
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.4rem;
+        padding-block: 0.2rem;
+
+        label {
+            font-size: 1.2rem;
+        }
+
+        input,
+        select {
+            width: 100%;
+            background-color: #ffffff10;
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #ffffff22;
+            font-size: 1rem;
+            color: #fff;
+            font-weight: 300;
+            transition: .5s;
+            height: 3rem;
+
+            &:hover,
+            &:focus {
+                border: 1px solid #101A8845;
+                box-shadow:
+                    inset 0px 0px 10px #BFC3C933,
+                    inset 0px 0px 10px #101A8888,
+                    0px 0px 100px #101A8888,
+                    0px 0px 100px #BFC3C933;
+            }
+        }
+    }
+}
+
+.addBTN {
+    margin-block: 20px;
+    padding-block: 0.7rem;
+    width: 100%;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    position: relative;
+    outline: none;
+    border: 1px solid #fff;
+    background-color: transparent;
+    transition: 0.3s;
+    line-height: 1.5;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.addBTN::before {
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(120deg, transparent, #fff, transparent);
+    transform: translateX(-100%);
+    transition: 0.6s;
+    position: absolute;
+}
+
+.addBTN:hover {
+    background-color: transparent;
+    border: 1px solid #101A88;
+    box-shadow: 0 0 20px 5px #101A88;
+}
+
+.addBTN:hover::before {
+    transform: translateX(100%);
+}
