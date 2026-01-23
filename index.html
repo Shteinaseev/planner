@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tasks planner</title>
+</head>
+
+<body>
+    <main class="main">
+        <aside class="panel" data-js-panel>
+            <h2>Datum: <time data-js-panel-time datetime=""></time></h2>
+            <form class="control">
+                <div class="field">
+                    <label for="task-name"></label>
+                    <input id="task-name" type="text">
+                </div>
+                <div class="field">
+                    <label for="prioritet"></label>
+                    <select name="prioritet" id="prioritet">
+                        <option value="nizak">Nizak</option>
+                        <option value="srednji">Srednji</option>
+                        <option value="visok">Visok</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="rok">Rok</label>
+                    <input id="rok" type="date" />
+                </div>
+                <button class="addBTN"></button>
+            </form>
+        </aside>
+        <section class="content">
+            <div class="control-buttons">
+                <button class="controlBTN">Sve</button>
+                <button class="controlBTN">Zavrsene</button>
+                <button class="controlBTN">Nezavrsene</button>
+                <button class="controlBTN">Obrisi zavrsene</button>
+            </div>
+            <div class="info" data-js-info>
+                <p class="total">
+                    Ukupno:
+                    <span id="total"></span>
+                </p>
+                <p class="completed">
+                    Zavrseno:
+                    <span id="completed"></span>
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
