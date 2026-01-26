@@ -67,6 +67,13 @@ input[type=number] {
 
 }
 
+.field-error {
+    color: #ff4d6d;
+    font-size: 0.9rem;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 77, 109, 0.8);
+}
+
 h2 {
     span {
         font-size: 1.2rem;
@@ -177,7 +184,6 @@ h1 {
     flex-grow: 1;
     display: grid;
     grid-template-columns: 1fr 3rem 1fr;
-    grid-template-rows: repeat(4, 150px);
     row-gap: 8rem;
     justify-items: center;
     min-height: 80vh;

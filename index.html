@@ -17,14 +17,14 @@
             <p>Sat:
                 <span data-js-panel-clock></span>
             </p>
-            <form class="control" data-js-form>
+            <form class="control" data-js-panel-form>
                 <div class="field">
                     <label for="task-name">Naziv obaveze</label>
-                    <input id="task-name" type="text">
+                    <input data-js-form-input id="task-name" type="text">
                 </div>
                 <div class="field">
                     <label for="prioritet">Prioritet</label>
-                    <select name="prioritet" id="prioritet">
+                    <select data-js-form-select name="prioritet" id="prioritet">
                         <option value="nizak">Nizak</option>
                         <option value="srednji">Srednji</option>
                         <option value="visok">Visok</option>
@@ -32,9 +32,10 @@
                 </div>
                 <div class="field">
                     <label for="rok">Rok</label>
-                    <input id="rok" type="date" />
+                    <input data-js-form-deadline id="rok" type="date" />
                 </div>
-                <button class="addBTN">Dodaj</button>
+                <span class="field-error" data-js-deadline-error></span>
+                <button data-js-panel-subtn class="addBTN">Dodaj</button>
             </form>
             <div class="info" data-js-info>
                 <p class="total">
@@ -51,12 +52,12 @@
                 </p>
             </div>
         </aside>
-        <section class="content">
+        <section class="content" data-js-content>
             <h1>Mini planer obaveza</h1>
-            <article class="tasks-container">
-                <div class="timeline"></div>
+            <article data-js-timeline class="tasks-container">
+                <div class="timeline" data-js-timeline-line></div>
                 <div class="task">
-                    <div class="task-content">
+                    <!-- <div class="task-content">
                         <span class="time">
                             <i class='bx bx-calendar-week'></i>
                             25.01.2026
@@ -65,32 +66,9 @@
                             First task
                         </h3>
                         <p>Prioritet: <span class="priority">Nizak</span></p>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="task">
-                    <div class="task-content">
-                        <span class="time">
-                            <i class='bx bx-calendar-week'></i>
-                            25.01.2026
-                        </span>
-                        <h3>
-                            Second task
-                        </h3>
-                        <p>Prioritet: <span class="priority">Srednji</span></p>
-                    </div>
-                </div>
-                <div class="task">
-                    <div class="task-content">
-                        <span class="time">
-                            <i class='bx bx-calendar-week'></i>
-                            25.01.2026
-                        </span>
-                        <h3>
-                            Third task
-                        </h3>
-                        <p>Prioritet: <span class="priority">Visok</span></p>
-                    </div>
-                </div>
+
             </article>
             <article class="control-buttons">
                 <button class="controlBTN">Sve</button>
