@@ -7,6 +7,7 @@
     <title>tasks planner</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -16,7 +17,7 @@
             <p>Sat:
                 <span data-js-panel-clock></span>
             </p>
-            <form class="control">
+            <form class="control" data-js-form>
                 <div class="field">
                     <label for="task-name">Naziv obaveze</label>
                     <input id="task-name" type="text">
@@ -57,36 +58,37 @@
                 <div class="task">
                     <div class="task-content">
                         <span class="time">
-                            26.01.2026
+                            <i class='bx bx-calendar-week'></i>
+                            25.01.2026
                         </span>
                         <h3>
                             First task
                         </h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, neque.</p>
-
+                        <p>Prioritet: <span class="priority">Nizak</span></p>
                     </div>
                 </div>
                 <div class="task">
                     <div class="task-content">
                         <span class="time">
-                            27.01.2026
+                            <i class='bx bx-calendar-week'></i>
+                            25.01.2026
                         </span>
                         <h3>
                             Second task
                         </h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, neque.</p>
-
+                        <p>Prioritet: <span class="priority">Srednji</span></p>
                     </div>
                 </div>
                 <div class="task">
                     <div class="task-content">
                         <span class="time">
+                            <i class='bx bx-calendar-week'></i>
                             25.01.2026
                         </span>
                         <h3>
                             Third task
                         </h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, neque.</p>
+                        <p>Prioritet: <span class="priority">Visok</span></p>
                     </div>
                 </div>
             </article>
@@ -98,6 +100,10 @@
             </article>
         </section>
     </main>
+    <!-- <label class="animated-checkbox">
+        <input type="checkbox">
+        <span class="check"></span>
+    </label> -->
 </body>
 
 </html>

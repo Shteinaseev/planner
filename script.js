@@ -2,7 +2,8 @@ class Planner {
     selectors = {
         panel: '[data-js-panel]',
         dateEl: '[data-js-panel-date]',
-        clockEl: '[data-js-panel-clock]'
+        clockEl: '[data-js-panel-clock]',
+        form: '[data-js-form]'
     }
 
     days = ['Nedelja', 'Ponedeljak', 'Utorak', 'Sreda', 'Četvrtak', 'Petak', 'Subota'];
