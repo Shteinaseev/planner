@@ -12,9 +12,9 @@
 <body>
     <main class="main">
         <aside class="panel" data-js-panel>
-            <h2>Datum: <span data-js-panel-day></span></h2>
-            <p>Sat: 
-                <span data-js-panel-time></span>
+            <h2>Datum: <span data-js-panel-date></span></h2>
+            <p>Sat:
+                <span data-js-panel-clock></span>
             </p>
             <form class="control">
                 <div class="field">
@@ -35,14 +35,6 @@
                 </div>
                 <button class="addBTN">Dodaj</button>
             </form>
-        </aside>
-        <section class="content">
-            <div class="control-buttons">
-                <button class="controlBTN">Sve</button>
-                <button class="controlBTN">Zavrsene</button>
-                <button class="controlBTN">Nezavrsene</button>
-                <button class="controlBTN">Obrisi zavrsene</button>
-            </div>
             <div class="info" data-js-info>
                 <p class="total">
                     Ukupno:
@@ -57,6 +49,53 @@
                     <span id="uncompleted">0</span>
                 </p>
             </div>
+        </aside>
+        <section class="content">
+            <h1>Mini planer obaveza</h1>
+            <article class="tasks-container">
+                <div class="timeline"></div>
+                <div class="task">
+                    <div class="task-content">
+                        <span class="time">
+                            26.01.2026
+                        </span>
+                        <h3>
+                            First task
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, neque.</p>
+
+                    </div>
+                </div>
+                <div class="task">
+                    <div class="task-content">
+                        <span class="time">
+                            27.01.2026
+                        </span>
+                        <h3>
+                            Second task
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, neque.</p>
+
+                    </div>
+                </div>
+                <div class="task">
+                    <div class="task-content">
+                        <span class="time">
+                            25.01.2026
+                        </span>
+                        <h3>
+                            Third task
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, neque.</p>
+                    </div>
+                </div>
+            </article>
+            <article class="control-buttons">
+                <button class="controlBTN">Sve</button>
+                <button class="controlBTN">Zavrsene</button>
+                <button class="controlBTN">Nezavrsene</button>
+                <button class="controlBTN">Obrisi zavrsene</button>
+            </article>
         </section>
     </main>
 </body>
