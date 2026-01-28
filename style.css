@@ -250,6 +250,18 @@ h1 {
                 font-weight: 400;
             }
 
+            &.completed {
+                opacity: 0.6;
+                text-decoration: line-through;
+            }
+
+            .wrapper {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                column-gap: 1rem;
+            }
 
             .time {
                 background-image: linear-gradient(to right,
@@ -269,20 +281,10 @@ h1 {
                     0px 0px 20px #BFC3C933;
             }
 
-            /* &::before {
-                content: '';
-                position: absolute;
-                left: -10px;
-                top: 15px;
-                width: 0;
-                height: 0;
-                border-top: 10px solid transparent;
-                border-bottom: 10px solid transparent;
-                border-right: 10px solid #fff;
-            } */
         }
 
         &:nth-of-type(even) {
+            --order: 1;
             --align: flex-start;
             text-align: left;
             grid-column: 3;
@@ -294,6 +296,7 @@ h1 {
         }
 
         &:nth-of-type(odd) {
+            --order: -1;
             --align: flex-end;
             text-align: right;
             grid-column: 1;
@@ -401,13 +404,13 @@ h1 {
     background-clip: text;
 }
 
-/* Base Styles */
-.animated-checkbox {
-    display: flex;
-    align-items: center;
+.custom-checkbox {
+    display: block;
+    position: relative;
     cursor: pointer;
-    margin-bottom: 16px;
+    font-size: 1.2rem;
     user-select: none;
+    order: var(--order);
 
     input {
         position: absolute;
@@ -416,79 +419,44 @@ h1 {
         height: 0;
         width: 0;
 
-        &:checked~.check::after {
+        &:checked~.checkmark {
+            background-color: #060a33;
+            box-shadow: 0 0 10px #101A88AA,
+                0 0 20px #5a8ae0AA,
+                0 0 30px #a5b4fcAA,
+                0 0 40px #dbeafeAA,
+                0 0 50px #f0f0f0AA,
+                0 0 60px #f0f0f0AA;
+        }
+
+        &:checked~.checkmark:after {
             display: block;
-            animation: checkmark 0.2s ease forwards;
         }
     }
 
-    &:hover .label {
-        color: #3498db;
-    }
-
-    &:hover .check {
-        border-color: #3498db;
-        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-    }
-
-    .check {
+    .checkmark {
         position: relative;
-        height: 22px;
-        width: 22px;
-        background-color: #fff;
-        border: 2px solid #ddd;
-        border-radius: 4px;
-        margin-right: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        border-radius: 50%;
-        transition: all 0.4s ease;
+        top: 0;
+        left: 0;
+        height: 1.3em;
+        width: 1.3em;
+        background: black;
+        border-radius: 50px;
+        transition: all 0.7s;
+        --spread: 20px;
 
-        &::after {
-            content: '';
+        &:after {
+            content: "";
             position: absolute;
             display: none;
-            width: 6px;
-            height: 12px;
-            border: solid white;
-            border-width: 0 2px 2px 0;
+            left: 0.45em;
+            top: 0.25em;
+            width: 0.25em;
+            height: 0.5em;
+            border: solid #f0f0f0;
+            border-width: 0 0.15em 0.15em 0;
             transform: rotate(45deg);
-            transition: all 0.2s ease;
-        }
-
-        &:focus~.check {
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-        }
-
-        &:checked~.check {
-            background-color: #3498db;
-            border-color: #3498db;
         }
     }
 
-    .label {
-        font-size: 16px;
-        line-height: 1.4;
-        color: #333;
-        transition: color 0.2s ease;
-    }
-}
-
-@keyframes checkmark {
-    0% {
-        opacity: 0;
-        transform: rotate(45deg) scale(0.8);
-    }
-
-    50% {
-        opacity: 1;
-        transform: rotate(45deg) scale(1.2);
-    }
-
-    100% {
-        opacity: 1;
-        transform: rotate(45deg) scale(1);
-    }
 }
