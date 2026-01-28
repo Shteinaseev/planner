@@ -13,7 +13,11 @@ class Planner {
         timelineEl: '[data-js-timeline]',
         contentEl: '[data-js-content]',
         lineEL: '[data-js-timeline-line]',
-        controlButtons: '[data-js-control-buttons]'
+        controlButtons: '[data-js-control-buttons]',
+        infoBlock: '[data-js-info]',
+        total: '[data-js-total]',
+        completed: '[data-js-completed]',
+        uncompleted: '[data-js-uncompleted]'
     }
     static taskCount = 0;
 
@@ -30,6 +34,11 @@ class Planner {
         this.timelineEl = this.contentEl.querySelector(this.selectors.timelineEl);
         this.controlButtons = this.contentEl.querySelector(this.selectors.controlButtons);
         this.lineEL = this.timelineEl.querySelector(this.selectors.lineEL);
+        this.infoBlock = this.panel.querySelector(this.selectors.infoBlock);
+        this.totalEl = this.infoBlock.querySelector(this.selectors.total);
+        this.completedEl = this.infoBlock.querySelector(this.selectors.completed);
+        this.uncompletedEl = this.infoBlock.querySelector(this.selectors.uncompleted);
+        setInterval(this.updateCounter.bind(this), 500);
         this.bindEvents()
         this.lineEL.classList.add('visibility-hidden')
     }
@@ -55,6 +64,34 @@ class Planner {
             String(now.getDate()).padStart(2, '0') + '.' +
             String(now.getMonth() + 1).padStart(2, '0') + '.' +
             now.getFullYear();
+    }
+
+    updateCounter() {
+        this.totalEl.textContent = Planner.taskCount;
+        this.completedEl.textContent = this.getCompletedTasksCount();
+        this.uncompletedEl.textContent = this.getUnCompletedTasksCount();
+    }
+
+    getCompletedTasksCount() {
+        const tasks = this.timelineEl.querySelectorAll('.task-content');
+        let count = 0;
+        tasks.forEach(task => {
+            if (task.classList.contains('completed')) {
+                count++;
+            }
+        });
+        return count;
+    }
+
+    getUnCompletedTasksCount() {
+        const tasks = this.timelineEl.querySelectorAll('.task-content');
+        let count = 0;
+        tasks.forEach(task => {
+            if (!task.classList.contains('completed')) {
+                count++;
+            }
+        });
+        return count;
     }
 
     appendTask(event) {
@@ -104,6 +141,8 @@ class Planner {
         } else {
             this.lineEL.classList.remove('visibility-hidden');
         }
+
+        this.updateCounter();
     }
 
     checkTitle(title) {
@@ -126,18 +165,47 @@ class Planner {
             const taskElement = target.closest('.task-content');
             taskElement.classList.toggle('completed');
         }
+        this.updateCounter();
+    }
+
+    showAllTasks() {
+        const tasks = this.timelineEl.querySelectorAll('.task-content');
+        tasks.forEach(task => {
+            task.parentElement.style.display = 'block';
+        });
     }
 
     showCompletedTasks() {
-        
         const tasks = this.timelineEl.querySelectorAll('.task-content');
         tasks.forEach(task => {
             if (task.classList.contains('completed')) {
-                task.style.display = 'flex';
+                task.parentElement.style.display = 'block';
             } else {
-                task.style.display = 'none';
+                task.parentElement.style.display = 'none';
             }
         });
+    }
+
+    showUncompletedTasks() {
+        const tasks = this.timelineEl.querySelectorAll('.task-content');
+        tasks.forEach(task => {
+            if (!task.classList.contains('completed')) {
+                task.parentElement.style.display = 'block';
+            } else {
+                task.parentElement.style.display = 'none';
+            }
+        });
+    }
+
+    deleteCompletedTasks() {
+        const tasks = this.timelineEl.querySelectorAll('.task-content');
+        tasks.forEach(task => {
+            if (task.classList.contains('completed')) {
+                task.parentElement.remove();
+                Planner.taskCount--;
+            }
+        });
+        this.updateCounter();
     }
 
     filterTasks(event) {
@@ -165,8 +233,6 @@ class Planner {
         this.timelineEl.addEventListener('click', (event) => this.completeTask(event));
         this.controlButtons.addEventListener('click', (event) => this.filterTasks(event));
     }
-
-
 
 }
 
