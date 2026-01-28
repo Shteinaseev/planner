@@ -22,6 +22,7 @@
                     <label for="task-name">Naziv obaveze</label>
                     <input data-js-form-input id="task-name" type="text">
                 </div>
+                <span class="field-error" data-js-title-error></span>
                 <div class="field">
                     <label for="prioritet">Prioritet</label>
                     <select data-js-form-select name="prioritet" id="prioritet">
@@ -56,19 +57,6 @@
             <h1>Mini planer obaveza</h1>
             <article data-js-timeline class="tasks-container">
                 <div class="timeline" data-js-timeline-line></div>
-                <div class="task">
-                    <!-- <div class="task-content">
-                        <span class="time">
-                            <i class='bx bx-calendar-week'></i>
-                            25.01.2026
-                        </span>
-                        <h3>
-                            First task
-                        </h3>
-                        <p>Prioritet: <span class="priority">Nizak</span></p>
-                    </div> -->
-                </div>
-
             </article>
             <article class="control-buttons">
                 <button class="controlBTN">Sve</button>
@@ -78,10 +66,6 @@
             </article>
         </section>
     </main>
-    <!-- <label class="animated-checkbox">
-        <input type="checkbox">
-        <span class="check"></span>
-    </label> -->
 </body>
 
 </html>

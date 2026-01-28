@@ -8,6 +8,7 @@ class Planner {
         formInput: '[data-js-form-input]',
         formSelect: '[data-js-form-select]',
         formDeadline: '[data-js-form-deadline]',
+        titleError: '[data-js-title-error]',
         deadlineError: '[data-js-deadline-error]',
         timelineEl: '[data-js-timeline]',
         contentEl: '[data-js-content]',
@@ -28,6 +29,8 @@ class Planner {
         this.timelineEl = this.contentEl.querySelector(this.selectors.timelineEl);
         this.lineEL = this.timelineEl.querySelector(this.selectors.lineEL);
         this.bindEvents()
+        this.lineEL.classList.add('visibility-hidden')
+
     }
 
 
@@ -56,9 +59,16 @@ class Planner {
 
     appendTask(event) {
         event.preventDefault();
+
         const taskName = this.form.querySelector(this.selectors.formInput).value;
         const taskPriority = this.form.querySelector(this.selectors.formSelect).value;
         const taskDeadline = this.form.querySelector(this.selectors.formDeadline).value;
+
+        if (this.checkTitle(taskName)) {
+            const titleError = this.form.querySelector(this.selectors.titleError);
+            titleError.textContent = 'Unesite naziv obaveze!';
+            return;
+        }
 
         if (this.checkDeadline(taskDeadline)) {
             const deadlineError = this.form.querySelector(this.selectors.deadlineError);
@@ -68,7 +78,7 @@ class Planner {
 
         const taskElement = document.createElement('div');
         taskElement.className = 'task';
-        this.contentEl.style.setProperty('--index', this.taskCount);
+        this.contentEl.style.setProperty('--index', Planner.taskCount);
         taskElement.innerHTML = `
             <div class="task-content">
                 <span class="time">
@@ -82,17 +92,29 @@ class Planner {
 
         this.timelineEl.appendChild(taskElement);
         Planner.taskCount++;
-        console.log(Planner.taskCount);
+
+        if (Planner.taskCount < 1) {
+            this.lineEL.classList.add('visibility-hidden');
+        } else {
+            this.lineEL.classList.remove('visibility-hidden');
+        }
+    }
+
+    checkTitle(title) {
+        return title.trim().length === 0;
     }
 
     checkDeadline(deadline) {
         const now = new Date();
         const taskDate = new Date(deadline);
-        return taskDate < now;
+        if (isNaN(taskDate.getTime()) || taskDate < now) {
+            console.log('Invalid deadline');
+            return true;
+        }
+        
     }
 
     bindEvents() {
-
         this.form.addEventListener('submit', (event) => this.appendTask(event));
     }
 

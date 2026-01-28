@@ -47,6 +47,11 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+.visibility-hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
 .main {
     height: 100%;
     display: grid;
@@ -180,19 +185,22 @@ h1 {
 }
 
 .tasks-container {
-    padding-top: 1.2rem;
+    margin-top: 1.2rem;
     flex-grow: 1;
     display: grid;
     grid-template-columns: 1fr 3rem 1fr;
-    row-gap: 8rem;
+    grid-auto-rows: minmax(160px, auto);
+    row-gap: 5rem;
     justify-items: center;
-    min-height: 80vh;
+    position: relative;
+
     width: 100%;
 
     .timeline {
         width: 0.38rem;
+        position: absolute;
         height: 100%;
-
+        left: 50%;
         background-image: linear-gradient(to bottom,
                 #0f1e3a,
                 #1a2e5c,
@@ -200,12 +208,11 @@ h1 {
                 #3f66b8,
                 #5a8ae0);
 
-        grid-column: 2;
-        grid-row: 1 / -1;
         justify-self: center;
         border-radius: 1rem;
         box-shadow: 0 8px 30px rgba(187, 155, 255, 0.3), 0 4px 12px rgba(233, 223, 255, 0.4);
-
+        z-index: 1;
+        transition: .3s;
     }
 
     .task {
