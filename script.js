@@ -117,6 +117,7 @@ class Planner {
         taskElement.className = 'task';
         this.contentEl.style.setProperty('--index', Planner.taskCount);
         taskElement.innerHTML = `
+            <div class="task-dot"></div>          
             <div class="task-content">
                 <span class="time">
                     <i class='bx bx-calendar-week'></i>
@@ -134,6 +135,7 @@ class Planner {
         `;
 
         this.timelineEl.appendChild(taskElement);
+        taskElement.dataset.priority = taskPriority;
         Planner.taskCount++;
 
         if (Planner.taskCount < 1) {
